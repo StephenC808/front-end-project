@@ -2,19 +2,18 @@
 <div class="col-lg-3 col-md-6 mb-3 d-flex align-items-stretch">
     {#if user}
         <div class="card">
-            <img src={user.picture.large} class="card-img-top" alt="User"/>
+            <img src={user.current.condition.icon} class="card-img-top" alt="User"/>
             <div class="card-body">
                 <h5 class="card-title">
-                    {user.name.first}
-                    {user.name.last}
+                    <p>{user.location.name}</p>
+                    {user.current.condition.text}
                 </h5>
-                <p class="card-text">{user.email}</p>
+                <p class="card-text">{user.location.name}</p>
                 <p class="card-text">
-                    {user.location.street.number}
-                    {user.location.street.name}
+                    {user.current.temp_c}°C
                 </p>
                 <p class="card-text">
-                    {user.location.city}, {user.location.country}
+                    {user.current.humidity}%
                 </p>
             </div>
         </div>
@@ -30,9 +29,11 @@
 
     onMount(async () => {
         try {
-            const response = await fetch('https://randomuser.me/api/');
+            const response = await fetch('http://api.weatherapi.com/v1/current.json?key=290d085fbcf34ab78fa184457241607&q=Galway&aqi=no');
             const data = await response.json();
-            user = data.results[0];
+            //var json = JSON.parse(data);
+            console.log(data.location.name);
+            user = data;
         } catch (error) {
             console.error('Error fetching user:', error);
         }
