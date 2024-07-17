@@ -13,7 +13,10 @@ import UserCard from '../../components/UserCard.svelte';
 		<h1>Svelte - User Cards</h1>
 	</div>
 	<CardContainer>
-		<UserCard client:load />
+		<UserCard client:load county="Galway"/>
+		<UserCard client:load county="Dublin"/>
+		<UserCard client:load county="Mayo, Ireland"/>
+		<UserCard client:load county="Wexford"/>
 	</CardContainer>
 </SiteLayout>
 

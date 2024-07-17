@@ -10,51 +10,15 @@ import UserCard from '../../components/UserCard.svelte';
 <SiteLayout title="Astro, Swelte, Bootstrap Demo">
 	<Banner imageURL="/images/banner.jpg" />
 	<div class="container pt-3">
-		<h1>Munster - Counties</h1>
+		<h1>Svelte - User Cards</h1>
 	</div>
 	<CardContainer>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-			imgAlt="Factorial Slider"
-			title="Clare"
-			body="Params in here\nhere"
-			href="#"
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
-			imgAlt="Ireland Weather API"
-			title="Cork"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href="#"
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/120.webp"
-			imgAlt="Nature"
-			title="Kerry"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href=""
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/125.webp"
-			imgAlt="Nature"
-			title="Limerick"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href=""
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-			imgAlt="Factorial Slider"
-			title="Tipperary"
-			body="Calculate the factorial of a set of numbers"
-			href="factorial-slider"
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
-			imgAlt="Ireland Weather API"
-			title="Waterford"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href="to-do-list"
-		/>
+		<UserCard client:load county="Claire"/>
+		<UserCard client:load county="Cork"/>
+		<UserCard client:load county="Kerry"/>
+		<UserCard client:load county="Limerick"/>
+		<UserCard client:load county="Tipperary"/>
+		<UserCard client:load county="Waterford"/>
 	</CardContainer>
 </SiteLayout>
 

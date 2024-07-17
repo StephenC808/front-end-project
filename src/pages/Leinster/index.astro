@@ -10,93 +10,21 @@ import UserCard from '../../components/UserCard.svelte';
 <SiteLayout title="Astro, Swelte, Bootstrap Demo">
 	<Banner imageURL="/images/banner.jpg" />
 	<div class="container pt-3">
-		<h1>Leinster - Counties</h1>
+		<h1>Svelte - User Cards</h1>
 	</div>
 	<CardContainer>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-			imgAlt="Factorial Slider"
-			title="Carlow"
-			body="Params in here\nhere"
-			href="#"
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
-			imgAlt="Ireland Weather API"
-			title="Dublin"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href="#"
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/120.webp"
-			imgAlt="Nature"
-			title="Kildare"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href=""
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/125.webp"
-			imgAlt="Kilkenny"
-			title="Down"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href=""
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-			imgAlt="Factorial Slider"
-			title="Laois"
-			body="Calculate the factorial of a set of numbers"
-			href="factorial-slider"
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
-			imgAlt="Ireland Weather API"
-			title="Longford"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href="to-do-list"
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/120.webp"
-			imgAlt="Nature"
-			title="Louth"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href=""
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/125.webp"
-			imgAlt="Nature"
-			title="Meath"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href=""
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-			imgAlt="Factorial Slider"
-			title="Offaly"
-			body="Calculate the factorial of a set of numbers"
-			href="factorial-slider"
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/120.webp"
-			imgAlt="Nature"
-			title="Westmeath"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href=""
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/125.webp"
-			imgAlt="Nature"
-			title="Wexford"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href=""
-		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-			imgAlt="Factorial Slider"
-			title="Wicklow"
-			body="Calculate the factorial of a set of numbers"
-			href="factorial-slider"
-		/>
+		<UserCard client:load county="Carlow"/>
+		<UserCard client:load county="Dublin"/>
+		<UserCard client:load county="Kildare"/>
+		<UserCard client:load county="Kilkenny"/>
+		<UserCard client:load county="Laois"/>
+		<UserCard client:load county="Longford"/>
+		<UserCard client:load county="Louth"/>
+		<UserCard client:load county="Meath"/>
+		<UserCard client:load county="Offaly"/>
+		<UserCard client:load county="Westmeath"/>
+		<UserCard client:load county="Wexford"/>
+		<UserCard client:load county="Wicklow"/>
 	</CardContainer>
 </SiteLayout>
 
