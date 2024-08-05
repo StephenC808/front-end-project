@@ -70,21 +70,10 @@ if (!max) {max=20}
   //document.querySelectorAll('input[type=text]').setAttribute("max", maxDate);
   //console.log(maxDate);
 
-  //let max_date = date.setDate(date.getDate()+1);
-
-  //console.log(maxDate.toISOString().split('T')[0]);
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
-
-  // This arrangement can be altered based on how we want the date's format to appear.
-  let currentDate = `${year}-${month}-${day}`;
-  console.log(currentDate); // "17-6-2022"
-
   // <button> does not generate a 'submit' event. Use 'click' instead 
-  button.addEventListener('click', getValues);
+  button.addEventListener('click', getFormValues);
 
-  function getValues() {
+  function getFormValues() {
     // Get the value of the input field with id="numb"
     
     let startDate = document.getElementById("StartDate");
@@ -93,16 +82,20 @@ if (!max) {max=20}
     let end = endDate.value;
     let locationOBJ = document.getElementById("input-text-field");
     let location = locationOBJ.value;
+    let gran = document.getElementById("granRadio");
+    //if (document.getElementById("hourly").checked)
+    let granularity = gran.value;
 
     // If x is Not a Number or less than one or greater than 10
     console.log(start);
     console.log(end);
     console.log(location);
-    tester(start, end, location);
+    console.log(granularity);
+    fetchAndDraw(start, end, location, granularity);
 
   }
 
-  async function tester(start,end,location) {
+  async function fetchAndDraw(start,end,location, granularity) {
     //`http://api.weatherapi.com/v1/current.json?key=290d085fbcf34ab78fa184457241607&q=${county}&aqi=no`
     //const response = await fetch(`http://api.weatherapi.com/v1/history.json?key=290d085fbcf34ab78fa184457241607&q=London&dt=2024-08-01`);
     //const response = await fetch(`http://api.weatherapi.com/v1/history.json?key=290d085fbcf34ab78fa184457241607&q=London&dt=${start}`);
@@ -117,40 +110,85 @@ if (!max) {max=20}
     const data = await response.json();
     //console.log(data.forecast.forecastday[0].hour);
     console.log(data);
-    var temp_labels=[];
-    var temp_data=[];
-    
-    for (let j = 0; j < data.forecast.forecastday.length; j++) {
-      for (let i = 0; i < data.forecast.forecastday[j].hour.length; i++) {
-        //console.log(i);
-        temp_labels.push(data.forecast.forecastday[j].hour[i].time);
-        temp_data.push(data.forecast.forecastday[j].hour[i].temp_c);
 
-      } 
-    }
+    if (granularity =="hourly") {
+      var temp_labels=[];
+      var temp_data=[];
     
-    if (theChart) {theChart.destroy();} // allows reselection without reloading the page
-    //theChart.destroy();
-    theChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        //temp_labels//labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: temp_data,
-          borderWidth: 1
-        }],
-        labels: temp_labels
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: false
+      for (let j = 0; j < data.forecast.forecastday.length; j++) {
+        for (let i = 0; i < data.forecast.forecastday[j].hour.length; i++) {
+          //console.log(i);
+          temp_labels.push(data.forecast.forecastday[j].hour[i].time);
+          temp_data.push(data.forecast.forecastday[j].hour[i].temp_c);
+
+        } 
+      }
+    
+      if (theChart) {theChart.destroy();} // allows reselection without reloading the page
+      //theChart.destroy();
+      theChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          //temp_labels//labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+            label: '# of Votes',
+            data: temp_data,
+            borderWidth: 1
+          }],
+          labels: temp_labels
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: false
+            }
           }
         }
-      }
-    });
+      });
+    }else{
+      var temp_labels=[];
+      var temp_data1=[];
+      var temp_data2=[];
+    
+      for (let j = 0; j < data.forecast.forecastday.length; j++) {
+        //for (let i = 0; i < data.forecast.forecastday[j].hour.length; i++) {
+          //console.log(i);
+        temp_labels.push(data.forecast.forecastday[j].date);
+        temp_data1.push(data.forecast.forecastday[j].day.maxtemp_c);
+        temp_data2.push(data.forecast.forecastday[j].day.mintemp_c);
 
-    //theChart.destroy()
+        } 
+      }
+    
+      if (theChart) {theChart.destroy();} // allows reselection without reloading the page
+      //theChart.destroy();
+      theChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          //temp_labels//labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+            label: 'Max degrees',
+            data: temp_data1,
+            borderWidth: 1,
+            
+          },{
+            label: 'min degrees',
+            data: temp_data2,
+            borderWidth: 1
+          }
+          ],
+          labels: temp_labels
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
   }
+    //theChart.destroy()
+  
 </script>
