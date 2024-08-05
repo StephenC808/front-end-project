@@ -83,8 +83,11 @@ if (!max) {max=20}
     let locationOBJ = document.getElementById("input-text-field");
     let location = locationOBJ.value;
     let gran = document.getElementById("granRadio");
-    //if (document.getElementById("hourly").checked)
-    let granularity = gran.value;
+    let granularity="";
+    if (document.getElementById("hourly").checked){
+      granularity = "hourly";
+    }
+    //let granularity = gran.value;
 
     // If x is Not a Number or less than one or greater than 10
     console.log(start);
@@ -112,14 +115,14 @@ if (!max) {max=20}
     console.log(data);
 
     if (granularity =="hourly") {
-      var temp_labels=[];
-      var temp_data=[];
+      var hour_labels=[];
+      var hour_data=[];
     
       for (let j = 0; j < data.forecast.forecastday.length; j++) {
         for (let i = 0; i < data.forecast.forecastday[j].hour.length; i++) {
           //console.log(i);
-          temp_labels.push(data.forecast.forecastday[j].hour[i].time);
-          temp_data.push(data.forecast.forecastday[j].hour[i].temp_c);
+          hour_labels.push(data.forecast.forecastday[j].hour[i].time);
+          hour_data.push(data.forecast.forecastday[j].hour[i].temp_c);
 
         } 
       }
@@ -132,10 +135,10 @@ if (!max) {max=20}
           //temp_labels//labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
           datasets: [{
             label: '# of Votes',
-            data: temp_data,
+            data: hour_data,
             borderWidth: 1
           }],
-          labels: temp_labels
+          labels: hour_labels
         },
         options: {
           scales: {
@@ -145,6 +148,7 @@ if (!max) {max=20}
           }
         }
       });
+
     }else{
       var temp_labels=[];
       var temp_data1=[];

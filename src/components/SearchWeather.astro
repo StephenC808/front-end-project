@@ -1,0 +1,133 @@
+---
+interface Props {
+	min: number;
+	max: number;
+}
+
+let { min, max } = Astro.props;
+
+if (!min) {min=1}
+if (!max) {max=20}
+
+---
+<section class="container">
+	<div class="row">
+		<form>
+			
+				  
+			<label for="input-text-field">Location:</label>
+			<input id="input-text-field" name="input-text-field" type="text" placeholder="Enter your Location" required>
+			
+
+      <button id="button" type="button" >Submit</button>
+		</form>
+	</div>
+
+</section>
+
+<section id="content"></section>
+
+
+<style></style>
+
+
+<script>
+
+  
+
+  const button = document.querySelector('#button');
+  
+  let location="";
+ 
+  button.addEventListener('click', getFormValues);
+
+  function getFormValues() {
+    // Get the value of the input field with id="numb"
+    
+    let locationOBJ = document.getElementById("input-text-field");
+    let location = locationOBJ.value;
+    let gran = document.getElementById("granRadio");
+   
+    fetchAndPrint(location);
+
+  }
+
+  async function fetchAndPrint(location) {
+    //`http://api.weatherapi.com/v1/current.json?key=290d085fbcf34ab78fa184457241607&q=${county}&aqi=no`
+    //const response = await fetch(`http://api.weatherapi.com/v1/history.json?key=290d085fbcf34ab78fa184457241607&q=London&dt=2024-08-01`);
+    //const response = await fetch(`http://api.weatherapi.com/v1/history.json?key=290d085fbcf34ab78fa184457241607&q=London&dt=${start}`);
+    const contentContainer = document.getElementById("content");
+    const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=290d085fbcf34ab78fa184457241607&q=${location}&aqi=no`);
+    const data = await response.json();
+    //console.log(data.forecast.forecastday[0].hour);
+    console.log(data);
+    //data.location.name
+
+    let outputHtml = '<div class="table-container">';
+    outputHtml +='<h2>Current weather data</h2>';
+    outputHtml += '<table class="table table-striped">';
+    outputHtml += ' <thead>';
+    outputHtml += '   <tr>';
+    outputHtml += '     <th>Parameter</th>';
+    outputHtml += '     <th>Value</th>';
+    outputHtml += '   </tr>';
+    outputHtml += ' </thead>';
+    outputHtml += ' <tbody>';
+
+    outputHtml += ' <tr>';
+    outputHtml += '   <td>Location</td>';
+    outputHtml += '   <td>' + data.location.name + ',' + data.location.country + '</td>';
+    outputHtml += ' </tr>';
+
+    outputHtml += ' <tr>';
+    outputHtml += '   <td>Temperature</td>';
+    outputHtml += '   <td>' + data.current.temp_c + '°C</td>';
+    outputHtml += ' </tr>';
+
+    outputHtml += ' <tr>';
+    outputHtml += '   <td>Humidity</td>';
+    outputHtml += '   <td>' + data.current.humidity + '%</td>';
+    outputHtml += ' </tr>';
+
+    outputHtml += ' <tr>';
+    outputHtml += '   <td>Precipitation</td>';
+    outputHtml += '   <td>' + data.current.precip_mm + ' mm</td>';
+    outputHtml += ' </tr>';
+
+    outputHtml += ' <tr>';
+    outputHtml += '   <td>Cloud cover</td>';
+    outputHtml += '   <td>' + data.current.cloud + '%</td>';
+    outputHtml += ' </tr>';
+
+    outputHtml += ' <tr>';
+    outputHtml += '   <td>Pressure</td>';
+    outputHtml += '   <td>' + data.current.pressure_mb + '</td>';
+    outputHtml += ' </tr>';
+
+    outputHtml += ' <tr>';
+    outputHtml += '   <td>UV index</td>';
+    outputHtml += '   <td>' + data.current.uv + '</td>';
+    outputHtml += ' </tr>';
+
+    outputHtml += ' <tr>';
+    outputHtml += '   <td>Wind Speed</td>';
+    outputHtml += '   <td>' + data.current.wind_kph + 'kmph</td>';
+    outputHtml += ' </tr>';
+
+    outputHtml += ' <tr>';
+    outputHtml += '   <td>Wind Direction</td>';
+    outputHtml += '   <td>' + data.current.wind_dir + '</td>';
+    outputHtml += ' </tr>';
+
+    outputHtml += ' <tr>';
+    outputHtml += '   <td>Visibility</td>';
+    outputHtml += '   <td>' + data.current.vis_km + '</td>';
+    outputHtml += ' </tr>';
+    
+    outputHtml += ' </tbody>';
+    outputHtml += '</table>';
+    outputHtml += '</div>';
+    contentContainer.innerHTML = outputHtml;
+    //theChart.destroy()
+  }
+</script>
