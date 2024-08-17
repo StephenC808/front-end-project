@@ -113,6 +113,8 @@ if (!max) {max=20}
     const data = await response.json();
     //console.log(data.forecast.forecastday[0].hour);
     console.log(data);
+    
+    if (theChart) {theChart.destroy();} // allows reselection without reloading the page
 
     if (granularity =="hourly") {
       var hour_labels=[];
@@ -127,7 +129,7 @@ if (!max) {max=20}
         } 
       }
     
-      if (theChart) {theChart.destroy();} // allows reselection without reloading the page
+      
       //theChart.destroy();
       theChart = new Chart(ctx, {
         type: 'line',
@@ -164,7 +166,7 @@ if (!max) {max=20}
         } 
       }
     
-      if (theChart) {theChart.destroy();} // allows reselection without reloading the page
+      //if (theChart) {theChart.destroy();} // allows reselection without reloading the page
       //theChart.destroy();
       theChart = new Chart(ctx, {
         type: 'bar',

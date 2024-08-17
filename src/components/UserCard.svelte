@@ -5,6 +5,7 @@
             <img src={user.current.condition.icon} class="card-img-top" alt="User"/>
             <div class="card-body">
                 <h5 class="card-title">
+                    <p>---------------------</p>
                     <p>{user.location.name}</p>
                     {user.current.condition.text}
                 </h5>
