@@ -1,13 +1,5 @@
 ---
-interface Props {
-	min: number;
-	max: number;
-}
 
-let { min, max } = Astro.props;
-
-if (!min) {min=1}
-if (!max) {max=20}
 
 ---
 <section class="container">
@@ -136,7 +128,7 @@ if (!max) {max=20}
         data: {
           //temp_labels//labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
           datasets: [{
-            label: '# of Votes',
+            label: '°C',
             data: hour_data,
             borderWidth: 1
           }],
@@ -173,14 +165,16 @@ if (!max) {max=20}
         data: {
           //temp_labels//labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
           datasets: [{
-            label: 'Max degrees',
+            label: 'Max °C',
             data: temp_data1,
             borderWidth: 1,
+            backgroundColor: '#FF000080'
             
           },{
-            label: 'min degrees',
+            label: 'Min °C',
             data: temp_data2,
-            borderWidth: 1
+            borderWidth: 1,
+            backgroundColor: '#0000FF80'
           }
           ],
           labels: temp_labels
