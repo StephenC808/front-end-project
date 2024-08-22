@@ -31,7 +31,7 @@
 
     onMount(async () => {
         try {
-            const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=290d085fbcf34ab78fa184457241607&q=${county}&aqi=no`);
+            const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=290d085fbcf34ab78fa184457241607&q=${county}&aqi=no`);
             const data = await response.json();
             //var json = JSON.parse(data);
             console.log(data.location.name);
