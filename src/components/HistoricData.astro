@@ -96,10 +96,10 @@
     //const response = await fetch(`http://api.weatherapi.com/v1/history.json?key=290d085fbcf34ab78fa184457241607&q=London&dt=${start}`);
     let fetchString=``;
     if (end){
-      fetchString=`http://api.weatherapi.com/v1/history.json?key=290d085fbcf34ab78fa184457241607&q=${location}&dt=${start}&end_dt=${end}`;
+      fetchString=`https://api.weatherapi.com/v1/history.json?key=290d085fbcf34ab78fa184457241607&q=${location}&dt=${start}&end_dt=${end}`;
     }
     else{
-      fetchString=`http://api.weatherapi.com/v1/history.json?key=290d085fbcf34ab78fa184457241607&q=${location}&dt=${start}`;
+      fetchString=`https://api.weatherapi.com/v1/history.json?key=290d085fbcf34ab78fa184457241607&q=${location}&dt=${start}`;
     }
     const response = await fetch(fetchString);
     const data = await response.json();
