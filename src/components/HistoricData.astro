@@ -3,25 +3,37 @@
 
 ---
 <section class="container">
-	<div class="row">
-		<form>
-			<label for="StartDate">Start Date:</label>
-			<input type="date" id="StartDate" name="StartDate">
+	  
+	<form>
+    <div class="row">
+      <div class="col">
+			  <label for="StartDate">Start Date:</label>
+			  <input type="date" id="StartDate" name="StartDate">
+      </div>
+			
+      <div class="col">
+			  <label for="EndDate">End Date:</label>
+			  <input type="date" id="EndDate" name="EndDate">
+      </div>
 				  
-			<label for="EndDate">End Date:</label>
-			<input type="date" id="EndDate" name="EndDate">
-				  
-			<label for="input-text-field">Location:</label>
-			<input id="input-text-field" name="input-text-field" type="text" placeholder="Enter your Location" required>
-				  
-			<input type="radio" id="daily" name="Granularity" value="daily">
-			<label for="daily">Daily</label>
-			<input type="radio" id="hourly" name="Granularity" value="hourly">
-			<label for="hourly">Hourly</label>
-				  
-			<button id="button" type="button" >Submit</button>
-		</form>
-	</div>
+      <div class="col">
+			  <label for="input-text-field"></label>
+			  <input id="input-text-field" name="input-text-field" type="text" placeholder="Enter your Location" required>
+      </div>
+			
+      <div class="col">
+			  <input type="radio" id="daily" name="Granularity" value="daily">
+			  <label for="daily">Daily</label>
+			  <input type="radio" id="hourly" name="Granularity" value="hourly">
+			  <label for="hourly">Hourly</label>
+      </div>
+      
+      <div class="col">	  
+			  <button id="button" type="button" >Submit</button>
+      </div>
+    </div>   
+	</form>
+	
 
 </section>
 
