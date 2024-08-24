@@ -2,6 +2,7 @@
 import Banner from '../components/Banner.astro';
 import CardContainer from '../components/CardContainer.astro';
 import Card4Col from '../components/Card4Col.astro';
+import Card4Col4Link from '../components/Card4Col4Link.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import UserCard from '../components/UserCard.svelte';
 
@@ -10,38 +11,30 @@ import UserCard from '../components/UserCard.svelte';
 <SiteLayout title="Astro, Swelte, Bootstrap Demo">
 	<Banner imageURL="/images/banner.jpg" />
 	<CardContainer>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-			imgAlt="Factorial Slider"
-			title="Factorial Slider"
-			body="Calculate the factorial of a set of numbers"
-			href="factorial-slider"
-		/>
-		<Card4Col
+		<Card4Col4Link
 			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
 			imgAlt="Ireland Weather API"
 			title="Ireland Weather API"
 			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href="to-do-list"
+			href="/front-end-project/Ulster"
+			href2="/front-end-project/Munster"
+			href3="/front-end-project/Leinster"
+			href4="/front-end-project/Connacht"
+		/>
+		<Card4Col
+			imgSrc="/front-end-project/images/graphthumb.jpg"
+			imgAlt="Historic data"
+			title="Historic data"
+			body="Calculate the factorial of a set of numbers"
+			href="/front-end-project/historic-data"
 		/>
 		<Card4Col
 			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/120.webp"
-			imgAlt="Nature"
-			title="Themes"
+			imgAlt="Search Weather"
+			title="Search Weather"
 			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href=""
+			href="/front-end-project/search-weather"
 		/>
-		<Card4Col
-			imgSrc="https://mdbcdn.b-cdn.net/img/new/standard/nature/125.webp"
-			imgAlt="Nature"
-			title="Community"
-			body="Some quick example text to build on the card title and make up the bulk of the card's content."
-			href=""
-		/>
-	</CardContainer>
-
-	<CardContainer>
-		<UserCard client:load/>
 	</CardContainer>
 
 </SiteLayout>

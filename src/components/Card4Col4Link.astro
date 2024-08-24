@@ -5,9 +5,12 @@ interface Props {
 	title: string;
 	body: string;
 	href: string;
+	href2: string;
+	href3: string;
+	href4: string;
 }
 
-const { imgSrc, imgAlt, title, body, href } = Astro.props;
+const { imgSrc, imgAlt, title, body, href, href2, href3, href4 } = Astro.props;
 ---
 
 <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-stretch">
@@ -16,7 +19,10 @@ const { imgSrc, imgAlt, title, body, href } = Astro.props;
 		<div class="card-body">
 			<h5 class="card-title">{title}</h5>
 			<p class="card-text">{body}</p>
-			<a class="card-link" href={href} title={title}>Read more...</a>
+			<a class="card-link" href={href} title={title}>Ulster</a>
+			<a class="card-link" href={href2} title={title}>Munster</a>
+			<a class="card-link" href={href3} title={title}>Leinster</a>
+			<a class="card-link" href={href4} title={title}>Connacht</a>
 		</div>
 	</div>
 </div>
